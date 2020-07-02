@@ -28,7 +28,7 @@ def get_login():
         'Connection': 'keep-alive',
         'Accept': 'application/json, text/javascript, */*; q=0.01',
         'X-Requested-With': 'XMLHttpRequest',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; Redmi K20 Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.99 Mobile Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'Origin': 'https://hl.cydgsx.com',
         'Sec-Fetch-Site': 'same-origin',
@@ -40,9 +40,9 @@ def get_login():
     }
 
     # 账号
-    username = '440602199910020931'
+    username = '123456789'
     # 密码
-    UserPwd = '440602199910020931'
+    UserPwd = '********'
 
     login_data = 'username={}&UserPwd={}&wxInfo=&openid='.format(
         username, UserPwd)
@@ -54,7 +54,7 @@ def get_login():
         'Host': 'hl.cydgsx.com',
         'Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; Redmi K20 Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.99 Mobile Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
         'Sec-Fetch-Site': 'same-origin',
         'Sec-Fetch-Mode': 'navigate',
@@ -79,11 +79,8 @@ def save_cookie():
     file_path = os.path.dirname(__file__)      # 分离文件路径与后缀
     with open('{}\cookie_index.txt'.format(file_path), "w") as index:
         json.dump(cookie_index, index)
-    # pprint.pprint(cookie_index, width=5)
     with open("{}\cookie_login.txt".format(file_path), "w") as login:
         json.dump(cookie_login, login)
-    # pprint.pprint(cookie_login, width=5)
-
 
 # 读取cookie
 def open_cookie():
@@ -130,7 +127,6 @@ def get_datetime():
 
 # 当天签到
 def qiandao():
-    # LoginTimeCooikeName 未发现如何生成
     headers = {
         'Host': 'hl.cydgsx.com',
         'Connection': 'keep-alive',
@@ -139,19 +135,19 @@ def qiandao():
         'Origin': 'https://hl.cydgsx.com',
         'X-Requested-With': 'XMLHttpRequest',
         'Sec-Fetch-Dest': 'empty',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; Redmi K20 Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.99 Mobile Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'Sec-Fetch-Site': 'same-origin',
         'Sec-Fetch-Mode': 'cors',
         'Referer': 'https://hl.cydgsx.com/m/s/Log/wLog',
         'Accept-Encoding': 'gzip, deflate',
         'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Cookie': 'ASP.NET_SessionId={0}; jxnApp=0; giveCard_10269={1}; loginUserName={2}; LoginTimeCooikeName=8ee100ae0db2c3afd71eaf3501ec36b1; LoginUser_Id={3}'.format(cookie_index['ASP.NET_SessionId'], cookie_index['giveCard_10269'], cookie_login['loginUserName'], cookie_login['LoginUser_Id'])
+        'Cookie': 'ASP.NET_SessionId={0}; jxnApp=0; giveCard_10269={1}; loginUserName={2}; LoginTimeCooikeName=8ee100zxcdb2c3afd71eax4501ec36b1; LoginUser_Id={3}'.format(cookie_index['ASP.NET_SessionId'], cookie_index['giveCard_10269'], cookie_login['loginUserName'], cookie_login['LoginUser_Id'])
     }
     # interContent 文本内容
     # posAddress 中文地址
     # posLong posLati 经纬度
-    qiang_data = 'InternStateId=4&interContent=%E7%B4%AF&logImg=&posAddress=%E4%B8%AD%E5%9B%BD%E5%B9%BF%E4%B8%9C%E7%9C%81%E4%BD%9B%E5%B1%B1%E5%B8%82%E7%A6%85%E5%9F%8E%E5%8C%BA%E8%BD%BB%E5%B7%A5%E5%8C%97%E4%B8%83%E8%A1%978%E5%8F%B7&posLong=113.09530631503551&posLati=23.03589761307942&locationType=1&ArticleId=0'
+    qiang_data = 'InternStateId=4&interContent=%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9&logImg=&posAddress=%E5%9C%B0%E5%9D%80&posLong=%E7%BB%8F%E7%BA%AC%E5%BA%A6&posLati=%E7%BB%8F%E7%BA%AC%E5%BA%A6&locationType=1&ArticleId=0'
 
     get_qian = requests.post(
         'https://hl.cydgsx.com/m/s/Log/SaveWriteLog', headers=headers, data=qiang_data)
@@ -170,31 +166,6 @@ def qiandao():
         print('尝试重新运行')
 
 
-# 补签
-def buqian():
-    headers = {
-        'Host': 'hl.cydgsx.com',
-        'Connection': 'keep-alive',
-        'Accept': '*/*',
-        'X-Requested-With': 'XMLHttpRequest',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; Redmi K20 Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.99 Mobile Safari/537.36',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        'Origin': 'https://hl.cydgsx.com',
-        'Sec-Fetch-Site': 'same-origin',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Dest': 'empty',
-        'Referer': 'https://hl.cydgsx.com/m/s/Log/wReplacementLog?date={}'.format(time_day),
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,ja;q=0.7',
-        'Cookie': 'LoginUser_Id=10269&logintype=2&RoleOId=295&UserName=440602199910020931&Name=%e9%bb%84%e4%bf%8a%e8%b1%aa&unGuid=28533bf0ec1f429eb9b188481218ac31; loginUserName=440602199910020931; ASP.NET_SessionId=dsmjtf1dngi51weqds2pjtzx; giveCard_10269=%7b%22id%22%3a0%2c%22isnew%22%3a0%2c%22title%22%3a%22%22%7d'
-    }
-
-    time_day_data = 'date={}&content=%E7%B4%AF&content_image=&address=%E4%B8%AD%E5%9B%BD%E5%B9%BF%E4%B8%9C%E7%9C%81%E4%BD%9B%E5%B1%B1%E5%B8%82%E7%A6%85%E5%9F%8E%E5%8C%BA%E8%BD%BB%E5%B7%A5%E5%8C%97%E4%B8%83%E8%A1%978%E5%8F%B7&longitude=113.09549430903348&latitude=23.03578462101444'.format(
-        time_day)
-
-    get_day = requests.post(
-        'https://hl.cydgsx.com/m/s/Log/SavewReplacementLog', headers=headers, data=time_day_data)
-
 
 # 周记
 def zhou_qiandao(today):
@@ -205,14 +176,14 @@ def zhou_qiandao(today):
         'Origin': 'https://hl.cydgsx.com',
         'X-Requested-With': 'XMLHttpRequest',
         'Sec-Fetch-Dest': 'empty',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; Redmi K20 Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.99 Mobile Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'Sec-Fetch-Site': 'same-origin',
         'Sec-Fetch-Mode': 'cors',
         'Referer': 'https://hl.cydgsx.com/m/s/Log/wWeekSmy?date={}'.format(today),
         'Accept-Encoding': 'gzip, deflate',
         'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Cookie': 'ASP.NET_SessionId={0}; jxnApp=0; giveCard_10269={1}; loginUserName={2}; LoginTimeCooikeName=8ee100ae0db2c3afd71eaf3501ec36b1; LoginUser_Id={3}'.format(cookie_index['ASP.NET_SessionId'], cookie_index['giveCard_10269'], cookie_login['loginUserName'], cookie_login['LoginUser_Id'])
+        'Cookie': 'ASP.NET_SessionId={0}; jxnApp=0; giveCard_10269={1}; loginUserName={2}; LoginTimeCooikeName=8ee100zxcdb2c3afd71eax4501ec36b1; LoginUser_Id={3}'.format(cookie_index['ASP.NET_SessionId'], cookie_index['giveCard_10269'], cookie_login['loginUserName'], cookie_login['LoginUser_Id'])
     }
     zhou_data = 'logImg=&smyDate={}&summaryType=%E5%91%A8%E5%B0%8F%E7%BB%93&summaryInfo=%E7%B4%AF'.format(
         today)
@@ -238,14 +209,14 @@ def yue_qiandao(today):
         'Origin': 'https://hl.cydgsx.com',
         'X-Requested-With': 'XMLHttpRequest',
         'Sec-Fetch-Dest': 'empty',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 10; Redmi K20 Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.99 Mobile Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'Sec-Fetch-Site': 'same-origin',
         'Sec-Fetch-Mode': 'cors',
         'Referer': 'https://hl.cydgsx.com/m/s/Log/wMonthSmy?date={}'.format(today),
         'Accept-Encoding': 'gzip, deflate',
         'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Cookie': 'ASP.NET_SessionId={0}; jxnApp=0; giveCard_10269={1}; loginUserName={2}; LoginTimeCooikeName=8ee100ae0db2c3afd71eaf3501ec36b1; LoginUser_Id={3}'.format(cookie_index['ASP.NET_SessionId'], cookie_index['giveCard_10269'], cookie_login['loginUserName'], cookie_login['LoginUser_Id'])
+        'Cookie': 'ASP.NET_SessionId={0}; jxnApp=0; giveCard_10269={1}; loginUserName={2}; LoginTimeCooikeName=8ee100zxcdb2c3afd71eax4501ec36b1; LoginUser_Id={3}'.format(cookie_index['ASP.NET_SessionId'], cookie_index['giveCard_10269'], cookie_login['loginUserName'], cookie_login['LoginUser_Id'])
     }
 
     yue_data = 'logImg=&smyDate={}&summaryType=%E6%9C%88%E5%B0%8F%E7%BB%93&summaryInfo=%E8%BF%98%E4%B8%8D%E9%94%99'.format(
@@ -262,6 +233,7 @@ def yue_qiandao(today):
         print(e)
         print('尝试重新运行')
 
+# ------------------------------------------------------------
 
 # 获取键值
 def get_keyvalue(key):
@@ -328,7 +300,6 @@ if __name__ == "__main__":
         print('无法启动线程')
         print(e)
 
-    # time_day = '2019-06-22'
     qiandao()
 
     os.system('pause')
