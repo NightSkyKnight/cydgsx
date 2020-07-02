@@ -1,0 +1,1 @@
+{"ASP.NET_SessionId": "3epdq5ezjwhiqfj3tmknrgmy", "LoginUser_Id": "10269&logintype=2&RoleOId=295&UserName=440602199910020931&Name=%e9%bb%84%e4%bf%8a%e8%b1%aa&unGuid=5cccd9f6b02a456f95c59437dd8e2b34", "loginUserName": "440602199910020931"}
